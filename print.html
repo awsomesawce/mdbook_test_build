@@ -97,7 +97,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="chapter_1.html"><strong aria-hidden="true">1.</strong> Chapter 1</a></li><li class="chapter-item expanded "><a href="chapter_2.html"><strong aria-hidden="true">2.</strong> Chapter 2</a></li><li class="chapter-item expanded "><a href="awk_snippets.html"><strong aria-hidden="true">3.</strong> awk snippets</a></li><li class="chapter-item expanded "><a href="bash_snippets.html"><strong aria-hidden="true">4.</strong> bash_snippets</a></li><li class="chapter-item expanded "><a href="Bash_builtins.html"><strong aria-hidden="true">5.</strong> Bash_builtins</a></li><li class="chapter-item expanded "><a href="shell_scripts_in_usr_bin.html"><strong aria-hidden="true">6.</strong> shell scripts locations</a></li><li class="chapter-item expanded "><a href="TypeLiterals_Powershell.html"><strong aria-hidden="true">7.</strong> Type Literals in Powershell</a></li><li class="chapter-item expanded "><a href="Tmux_commands.html"><strong aria-hidden="true">8.</strong> Tmux Commands</a></li><li class="chapter-item expanded "><a href="Markdown_renderers.html"><strong aria-hidden="true">9.</strong> Markdown Renderers</a></li><li class="chapter-item expanded "><a href="Just_Found_Out.html"><strong aria-hidden="true">10.</strong> Just_Found_Out</a></li><li class="chapter-item expanded "><a href="other_languages.html"><strong aria-hidden="true">11.</strong> Other Languages</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="chapter_1.html"><strong aria-hidden="true">1.</strong> Chapter 1</a></li><li class="chapter-item expanded "><a href="chapter_2.html"><strong aria-hidden="true">2.</strong> Chapter 2</a></li><li class="chapter-item expanded "><a href="awk_snippets.html"><strong aria-hidden="true">3.</strong> awk snippets</a></li><li class="chapter-item expanded "><a href="bash_snippets.html"><strong aria-hidden="true">4.</strong> bash_snippets</a></li><li class="chapter-item expanded "><a href="Bash_builtins.html"><strong aria-hidden="true">5.</strong> Bash_builtins</a></li><li class="chapter-item expanded "><a href="shell_scripts_in_usr_bin.html"><strong aria-hidden="true">6.</strong> shell scripts locations</a></li><li class="chapter-item expanded "><a href="TypeLiterals_Powershell.html"><strong aria-hidden="true">7.</strong> Type Literals in Powershell</a></li><li class="chapter-item expanded "><a href="Powershell_Wrapper_Functions.html"><strong aria-hidden="true">8.</strong> Powershell Wrapper Functions</a></li><li class="chapter-item expanded "><a href="Tmux_commands.html"><strong aria-hidden="true">9.</strong> Tmux Commands</a></li><li class="chapter-item expanded "><a href="Markdown_renderers.html"><strong aria-hidden="true">10.</strong> Markdown Renderers</a></li><li class="chapter-item expanded "><a href="Just_Found_Out.html"><strong aria-hidden="true">11.</strong> Just_Found_Out</a></li><li class="chapter-item expanded "><a href="other_languages.html"><strong aria-hidden="true">12.</strong> Other Languages</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -436,6 +436,25 @@ $myEncoded = [convert]::ToBase64String($myBytes)
 return Write-Output $myEncoded
 Write-Output $myEncoded # =&gt; dGVzdCBzdHJpbmc=
 </code></pre>
+<p><em>You can even create directories using type literal methods!</em></p>
+<pre><code class="language-powershell">[System.IO.Directory]::CreateDirectory('new_dir') # =&gt; creates `typedir` and 
+# outputs info about the dir to stdout in the same format as `Get-Item`
+</code></pre>
+<h3 id="type-literal-methods"><a class="header" href="#type-literal-methods">Type Literal Methods</a></h3>
+<p>Type literals expose methods like <code>CreateDirectory()</code> and such that allow you to do
+things where you would normally use a cmdlet or function.</p>
+<h3 id="typing-variables-with-type-literals"><a class="header" href="#typing-variables-with-type-literals">Typing variables with Type Literals</a></h3>
+<p>By prepending a type literal to a variable, you're able to tell the interpreter
+the type without it having to guess (dynamic typing).</p>
+<p>Example:</p>
+<pre><code class="language-powershell">[string]$num = 3 # This tells powershell to parse the value of $num as a string.
+# You can test this with:
+$num.GetType().FullName # =&gt; System.String
+# Entering `$num.GetType()` without `FullName` output the type information as
+# an object, so you can use something like this:
+$num.GetType() | select-object *
+# To get more information and show every property.
+</code></pre>
 <p>Powershell includes nice tab-completion for type-literals, so if you type somthing
 like:
 <code>[System.Net.</code> and press <kbd>TAB</kbd>, you will cycle thru possible type names.</p>
@@ -460,6 +479,42 @@ using <em>tab-complete</em> and I came across this type:</p>
 <p>Instead it changed my <em>prompt string</em> to the color <strong>blue</strong>.</p>
 <blockquote>
 <p>Well there's another way u can use type lits in your terminal!</p>
+</blockquote>
+<h1 id="powershell-wrapper-functions"><a class="header" href="#powershell-wrapper-functions">Powershell Wrapper Functions</a></h1>
+<h2 id="wrapper-for-nodejs"><a class="header" href="#wrapper-for-nodejs">Wrapper for Nodejs</a></h2>
+<p>Here is a wrapper function for using node on the command line:</p>
+<pre><code class="language-powershell">function get-nodecmd {
+
+&lt;#
+.Description
+Acts like a pydoc of sorts
+#&gt;
+param(
+    [parameter(Mandatory = $false)]
+    [string]
+    $Name
+)
+# Checks if node is not on path and throws if that is true
+if (!(Get-Command node -ErrorAction Ignore)) { throw &quot;Node not installed on path, aborting function&quot; }
+# Checks if there is an argument to the Name parameter, and writes an error message if false
+if ($Name) {
+    Use node to print a javascript object as a string of the current locale to stdout.
+    node -p &quot;$Name.toLocaleString()&quot;
+}
+else { Write-Error &quot;Need argument to this function.  Use Get-Help $($MyInvocation.MyCommand.Name) to get help&quot; }
+
+}
+</code></pre>
+<p>You can test if this command works by typing <code>get-nodecmd &quot;os.arch&quot;</code> on the cmdline.</p>
+<p>Your output should be:</p>
+<pre><code class="language-powershell">function arch() {
+  return process.arch;
+}
+</code></pre>
+<p>Which shows that the <code>os.arch()</code> function simply prints the value of <code>process.arch</code>.</p>
+<blockquote>
+<p>If the value of <code>$Name.toLocaleString</code> is already a string, it will simply print
+the value as is.</p>
 </blockquote>
 <h1 id="tmux-commands"><a class="header" href="#tmux-commands">Tmux commands</a></h1>
 <p>Hello from tmux</p>
