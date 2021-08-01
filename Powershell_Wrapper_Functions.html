@@ -181,7 +181,7 @@ param(
 if (!(Get-Command node -ErrorAction Ignore)) { throw &quot;Node not installed on path, aborting function&quot; }
 # Checks if there is an argument to the Name parameter, and writes an error message if false
 if ($Name) {
-    Use node to print a javascript object as a string of the current locale to stdout.
+    # Use node to print a javascript object as a string of the current locale to stdout.
     node -p &quot;$Name.toLocaleString()&quot;
 }
 else { Write-Error &quot;Need argument to this function.  Use Get-Help $($MyInvocation.MyCommand.Name) to get help&quot; }
@@ -199,6 +199,31 @@ else { Write-Error &quot;Need argument to this function.  Use Get-Help $($MyInvo
 <p>If the value of <code>$Name.toLocaleString</code> is already a string, it will simply print
 the value as is.</p>
 </blockquote>
+<h3 id="more-nodejs-wrapper-functions"><a class="header" href="#more-nodejs-wrapper-functions">More nodejs wrapper functions:</a></h3>
+<pre><code class="language-powershell">#!/usr/bin/env -S pwsh -noprofile
+# Two ways to get the same info
+
+function getnodepath {
+    # First way
+    $v =  node -p &quot;process.argv&quot; $(foreach ($item in $env:PATH.Split(&quot;;&quot;)) {
+    &quot;$item&quot;
+    })
+    return $v
+}
+
+function getnodepathpure {
+    # Second way
+    $v = node -p &quot;process.env.PATH.split(';')&quot;
+    return $v
+}
+
+compare-object $(getnodepath) $(getnodepathpure)
+# =&gt; outputs the only difference which is that node.exe is
+# at the front of the path for the pure version
+</code></pre>
+<p>These two functions output the same information because they are both routed thru the
+same type of method.
+They both take a string and split it by the <code>;</code> token.</p>
 
                     </main>
 
