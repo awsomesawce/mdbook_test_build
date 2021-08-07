@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>Tmux Commands - The Battle of the Shells/Interpreted Langs</title>
+        <title>Types and Classes - The Battle of the Shells/Interpreted Langs</title>
         
         
 
@@ -95,7 +95,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="WELCOME.html"><strong aria-hidden="true">1.</strong> Welcome</a></li><li class="chapter-item expanded "><a href="chapter_1.html"><strong aria-hidden="true">2.</strong> Chapter 1</a></li><li class="chapter-item expanded "><a href="chapter_2.html"><strong aria-hidden="true">3.</strong> Chapter 2</a></li><li class="chapter-item expanded "><a href="awk_snippets.html"><strong aria-hidden="true">4.</strong> awk snippets</a></li><li class="chapter-item expanded "><a href="bash_snippets.html"><strong aria-hidden="true">5.</strong> bash_snippets</a></li><li class="chapter-item expanded "><a href="Bash_builtins.html"><strong aria-hidden="true">6.</strong> Bash_builtins</a></li><li class="chapter-item expanded "><a href="shell_scripts_in_usr_bin.html"><strong aria-hidden="true">7.</strong> shell scripts locations</a></li><li class="chapter-item expanded "><a href="TypeLiterals_Powershell.html"><strong aria-hidden="true">8.</strong> Type Literals in Powershell</a></li><li class="chapter-item expanded "><a href="TypesAndClasses.html"><strong aria-hidden="true">9.</strong> Types and Classes</a></li><li class="chapter-item expanded "><a href="Powershell_Wrapper_Functions.html"><strong aria-hidden="true">10.</strong> Powershell Wrapper Functions</a></li><li class="chapter-item expanded "><a href="Tmux_commands.html" class="active"><strong aria-hidden="true">11.</strong> Tmux Commands</a></li><li class="chapter-item expanded "><a href="Markdown_renderers.html"><strong aria-hidden="true">12.</strong> Markdown Renderers</a></li><li class="chapter-item expanded "><a href="Just_Found_Out.html"><strong aria-hidden="true">13.</strong> Just_Found_Out</a></li><li class="chapter-item expanded "><a href="other_languages.html"><strong aria-hidden="true">14.</strong> Other Languages</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="WELCOME.html"><strong aria-hidden="true">1.</strong> Welcome</a></li><li class="chapter-item expanded "><a href="chapter_1.html"><strong aria-hidden="true">2.</strong> Chapter 1</a></li><li class="chapter-item expanded "><a href="chapter_2.html"><strong aria-hidden="true">3.</strong> Chapter 2</a></li><li class="chapter-item expanded "><a href="awk_snippets.html"><strong aria-hidden="true">4.</strong> awk snippets</a></li><li class="chapter-item expanded "><a href="bash_snippets.html"><strong aria-hidden="true">5.</strong> bash_snippets</a></li><li class="chapter-item expanded "><a href="Bash_builtins.html"><strong aria-hidden="true">6.</strong> Bash_builtins</a></li><li class="chapter-item expanded "><a href="shell_scripts_in_usr_bin.html"><strong aria-hidden="true">7.</strong> shell scripts locations</a></li><li class="chapter-item expanded "><a href="TypeLiterals_Powershell.html"><strong aria-hidden="true">8.</strong> Type Literals in Powershell</a></li><li class="chapter-item expanded "><a href="TypesAndClasses.html" class="active"><strong aria-hidden="true">9.</strong> Types and Classes</a></li><li class="chapter-item expanded "><a href="Powershell_Wrapper_Functions.html"><strong aria-hidden="true">10.</strong> Powershell Wrapper Functions</a></li><li class="chapter-item expanded "><a href="Tmux_commands.html"><strong aria-hidden="true">11.</strong> Tmux Commands</a></li><li class="chapter-item expanded "><a href="Markdown_renderers.html"><strong aria-hidden="true">12.</strong> Markdown Renderers</a></li><li class="chapter-item expanded "><a href="Just_Found_Out.html"><strong aria-hidden="true">13.</strong> Just_Found_Out</a></li><li class="chapter-item expanded "><a href="other_languages.html"><strong aria-hidden="true">14.</strong> Other Languages</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -163,46 +163,97 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="tmux-commands"><a class="header" href="#tmux-commands">Tmux commands</a></h1>
-<p>Hello from tmux</p>
-<p><code>tmux</code> is an amazing <em>terminal multiplexer</em>.  This means that <code>tmux</code> can create multiple <em>sessions</em> and <em>windows</em> from one terminal window.
-If your terminal emulator (I use <strong>Windows Terminal</strong>) doesn't support multiple windows/tabs (mine does), you can use <code>tmux</code> to get that functionality from within the shell.</p>
-<p><code>byobu</code> is a <code>tmux</code> wrapper that adds some more functionality and keybindings to <code>tmux</code>.  It is written and maintained by a guy who works for the company that makes <strong>Ubuntu</strong>, the most popular Linux distribution.</p>
-<p><code>byobu</code> adds things like extra keybindings, extra features, more config options, easier config, and other things to <code>tmux</code>.</p>
-<p><code>byobu</code> also supports a program called <code>screen</code> which is a GNU project.  <code>screen</code> is a bit different from <code>tmux</code> but the premise is the same.  They both enable you to have multiple terminal windows/panes/sessions open at the same time.</p>
-<p><code>byobu</code> also adds more informative features like a info-bar on the bottom of the screen that gives information like:</p>
+                        <hr />
+<h2>title: &quot;TypesAndClasses&quot;
+date: 2021-08-05T23:04:20-04:00
+tags: [&quot;Powershell&quot;, &quot;types&quot;, &quot;scripts&quot;]
+draft: false</h2>
+<h1 id="types-and-classes-in-powershell"><a class="header" href="#types-and-classes-in-powershell">Types and Classes in Powershell</a></h1>
+<p>When using Powershell's type literal syntax like <code>$([string]::IsNullOrWhiteSpace($var))</code>,
+these are actually class methods.</p>
+<p><code>[string]</code> is the class, <code>::IsNullOrWhiteSpace()</code> is the method that returns a <code>[boolean]</code> value
+of $true or $false.</p>
+<h2 id="base-types-in-powershell"><a class="header" href="#base-types-in-powershell">Base types in Powershell</a></h2>
+<p>When writing out a type literal in Powershell, there are certain types/classes that expand to <em>one</em> word when tab-completing, as opposed to <em>4</em> words which is the usual occurance.</p>
+<p>Here are a few of these base types:</p>
 <ul>
-<li>the current Linux distro you're using.</li>
-<li>The time and date.</li>
-<li>The speed of your processor.</li>
+<li><code>[string]</code></li>
+<li><code>[object]</code></li>
+<li><code>[type]</code></li>
+<li><code>[psobject]</code></li>
+<li><code>[hashtable]</code></li>
+<li><code>[type]</code></li>
+<li><code>[boolean]</code></li>
+<li><code>[bool]</code></li>
+<li><code>[psvariable]</code></li>
 </ul>
-<h2 id="other-things-byobu-adds"><a class="header" href="#other-things-byobu-adds">Other things Byobu adds</a></h2>
-<p>Easy config of the <em>prefix</em> command for operation with your terminal multiplexer of choice.<br />
-For instance, you can change the default prefix key from <code>Ctrl-B</code> (for tmux) to <code>Ctrl-A</code> (which is the screen prefix key).
-This might be convenient for someone who doesn't use <code>C-a</code> on the cmdline.  Normally <code>C-a</code> brings your cursor to the beginning of the line.  But if you'd rather use, for instance, the <code>&lt;HOME&gt;</code> key, you can set <code>C-a</code> to be your prefix key and do things like <code>C-a n</code> to go to next tmux window or <code>C-a c</code> to create a new window.</p>
-<p><code>byobu</code> adds a bunch of scripts and programs to your bin.  They all begin with <code>byobu-</code>, so type that into your <code>bash</code> or <code>zsh</code> command line and type <code>&lt;TAB&gt;</code> to see all of your choices.</p>
-<p><code>byobu</code>'s documentation is extremely consise.  Every <code>byobu-*</code> tool has it's own <strong>manpage</strong>.<br />
-You can type <code>man byobu-</code> and press <code>&lt;TAB&gt;</code> to see all the manpages available.</p>
-<h3 id="list-of-some-byobu--manpages"><a class="header" href="#list-of-some-byobu--manpages">List of some byobu-* manpages</a></h3>
+<h3 id="filesystem-classes"><a class="header" href="#filesystem-classes">Filesystem classes</a></h3>
+<p>Being a shell, using Powershell has a lot to do with altering and modifying the file system.
+Here are a few of the most important classes and methods that you'll run into while dealing with file system objects.</p>
 <ul>
-<li><code>byobu-config</code>: gives you an <em>ncurses</em> menu for altering the configuration of <code>byobu</code>.</li>
-<li><code>byobu-ctrl-a</code>: This convenient script allows you to easily modify your prefix key from <code>Ctrl-b</code> back to <code>Ctrl-a</code> and vise-versa.</li>
-<li><input disabled="" type="checkbox"/>
-TODO <code>byobu-</code></li>
+<li><code>[System.IO.Path]</code>
+Some methods include: <code>::GetTempFileName()</code>, <code>::GetRandomFileName()</code></li>
 </ul>
+<h4 id="note-about-get-item-and-get-childitem"><a class="header" href="#note-about-get-item-and-get-childitem">Note about Get-Item and Get-ChildItem</a></h4>
+<p>Setting the value of a variable to the output of Get-ChildItem will assign the <em>object</em> to the variable, not just the <em>path</em> string.
+The path string may be gotten by getting the FullName property.</p>
+<blockquote>
+<p>Always use <code>Get-Member</code> if you are unsure about which methods you have access to.</p>
+</blockquote>
+<h2 id="a-collection-of-collection-classes"><a class="header" href="#a-collection-of-collection-classes">A Collection of Collection Classes</a></h2>
+<ul>
+<li>
+<p><code>$x = [System.Collections.Generic.List[object]]::new()</code>
+Creates a list of whatever type you choose.</p>
+</li>
+<li>
+<p><code>[System.Collections.Specialized.ListDictionary]::new()</code></p>
+</li>
+<li>
+<p><code>System.Collections.Specialized.HybridDictionary new() System.Collections.Specialized.HybridDictionary new(int initialSize) System.Collections.Specialized.HybridDictionary new(bool caseInsensitive) System.Collections.Specialized.HybridDictionary new(int initialSize, bool caseInsensitive)</code></p>
+</li>
+</ul>
+<p>-<code>[hashtable]::new()</code> or <code>[System.Collections.Hashtable]::new()</code>
+The default collection type/class for dictionary-like objects in <strong>Powershell</strong></p>
+<blockquote>
+<p>Hashtables can also be instanciated by using this syntax:
+<code>$hashtable = @{}</code>
+Afterwards, you have access to the <code>add(key, value)</code></p>
+</blockquote>
+<p><code>[hashtable]</code> can contain <em>any</em> powershell object, including other hashtables, arrays, and lists/collections.</p>
+<ul>
+<li><code>[System.Collections.ObjectModel.Collection[psobject]]::new()</code></li>
+</ul>
+<h3 id="collection-of-immutable-collections"><a class="header" href="#collection-of-immutable-collections">Collection of Immutable Collections</a></h3>
+<p>Immutable collections are collections that cannot be changed once they've been created.</p>
+<p>Most of them exist in the <code>System.Collections.Immutable</code> namespace.</p>
+<ul>
+<li><code>[System.Collections.Immutable.ImmutableArray]::Create($env:Path.Split(';'))</code>
+This will create an array consisting of the entries in Path.</li>
+</ul>
+<h3 id="alternative-ways-of-creating-collections"><a class="header" href="#alternative-ways-of-creating-collections">Alternative ways of creating Collections</a></h3>
+<blockquote>
+<p>Check Powershell's <em>about_hash_tables</em> document for more info.</p>
+</blockquote>
+<p>Some dictionary types are able to be initialized with a simpler syntax.</p>
+<p>You can create an ordered dictionary by using this syntax:</p>
+<pre><code class="language-powershell">$ordered = [ordered]@{name = &quot;carl&quot;; Shape = &quot;Square&quot;; Color = &quot;Blue&quot;}
+# Then use GetType() to see the resulting type
+$ordered.GetType().Name # =&gt; OrderedDictionary
+</code></pre>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
                         
-                            <a rel="prev" href="Powershell_Wrapper_Functions.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                            <a rel="prev" href="TypeLiterals_Powershell.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
                         
 
                         
-                            <a rel="next" href="Markdown_renderers.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next" href="Powershell_Wrapper_Functions.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
                         
@@ -214,13 +265,13 @@ TODO <code>byobu-</code></li>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
                 
-                    <a rel="prev" href="Powershell_Wrapper_Functions.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a rel="prev" href="TypeLiterals_Powershell.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
                 
 
                 
-                    <a rel="next" href="Markdown_renderers.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next" href="Powershell_Wrapper_Functions.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
                 
