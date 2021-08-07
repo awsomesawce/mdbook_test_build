@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>Chapter 2 - The Battle of the Shells/Interpreted Langs</title>
+        <title>Powershell - The Battle of the Shells/Interpreted Langs</title>
         
         
 
@@ -95,7 +95,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded affix "><a href="WELCOME.html">Welcome</a></li><li class="chapter-item expanded "><a href="chapter_1.html"><strong aria-hidden="true">1.</strong> Chapter 1</a></li><li class="chapter-item expanded "><a href="chapter_2.html" class="active"><strong aria-hidden="true">2.</strong> Chapter 2</a></li><li class="chapter-item expanded "><a href="awk_snippets.html"><strong aria-hidden="true">3.</strong> awk snippets</a></li><li class="chapter-item expanded "><a href="bash_snippets.html"><strong aria-hidden="true">4.</strong> bash_snippets</a></li><li class="chapter-item expanded "><a href="Bash_builtins.html"><strong aria-hidden="true">5.</strong> Bash_builtins</a></li><li class="chapter-item expanded "><a href="shell_scripts_in_usr_bin.html"><strong aria-hidden="true">6.</strong> shell scripts locations</a></li><li class="chapter-item expanded "><a href="Powershell.html"><strong aria-hidden="true">7.</strong> Powershell</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="TypeLiterals_Powershell.html"><strong aria-hidden="true">7.1.</strong> Type Literals in Powershell</a></li><li class="chapter-item expanded "><a href="TypesAndClasses.html"><strong aria-hidden="true">7.2.</strong> Types and Classes</a></li><li class="chapter-item expanded "><a href="Powershell_Wrapper_Functions.html"><strong aria-hidden="true">7.3.</strong> Powershell Wrapper Functions</a></li></ol></li><li class="chapter-item expanded "><a href="Tmux_commands.html"><strong aria-hidden="true">8.</strong> Tmux Commands</a></li><li class="chapter-item expanded "><a href="Markdown_renderers.html"><strong aria-hidden="true">9.</strong> Markdown Renderers</a></li><li class="chapter-item expanded "><a href="Just_Found_Out.html"><strong aria-hidden="true">10.</strong> Just_Found_Out</a></li><li class="chapter-item expanded "><a href="other_languages.html"><strong aria-hidden="true">11.</strong> Other Languages</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="WELCOME.html">Welcome</a></li><li class="chapter-item expanded "><a href="chapter_1.html"><strong aria-hidden="true">1.</strong> Chapter 1</a></li><li class="chapter-item expanded "><a href="chapter_2.html"><strong aria-hidden="true">2.</strong> Chapter 2</a></li><li class="chapter-item expanded "><a href="awk_snippets.html"><strong aria-hidden="true">3.</strong> awk snippets</a></li><li class="chapter-item expanded "><a href="bash_snippets.html"><strong aria-hidden="true">4.</strong> bash_snippets</a></li><li class="chapter-item expanded "><a href="Bash_builtins.html"><strong aria-hidden="true">5.</strong> Bash_builtins</a></li><li class="chapter-item expanded "><a href="shell_scripts_in_usr_bin.html"><strong aria-hidden="true">6.</strong> shell scripts locations</a></li><li class="chapter-item expanded "><a href="Powershell.html" class="active"><strong aria-hidden="true">7.</strong> Powershell</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="TypeLiterals_Powershell.html"><strong aria-hidden="true">7.1.</strong> Type Literals in Powershell</a></li><li class="chapter-item expanded "><a href="TypesAndClasses.html"><strong aria-hidden="true">7.2.</strong> Types and Classes</a></li><li class="chapter-item expanded "><a href="Powershell_Wrapper_Functions.html"><strong aria-hidden="true">7.3.</strong> Powershell Wrapper Functions</a></li></ol></li><li class="chapter-item expanded "><a href="Tmux_commands.html"><strong aria-hidden="true">8.</strong> Tmux Commands</a></li><li class="chapter-item expanded "><a href="Markdown_renderers.html"><strong aria-hidden="true">9.</strong> Markdown Renderers</a></li><li class="chapter-item expanded "><a href="Just_Found_Out.html"><strong aria-hidden="true">10.</strong> Just_Found_Out</a></li><li class="chapter-item expanded "><a href="other_languages.html"><strong aria-hidden="true">11.</strong> Other Languages</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -163,41 +163,21 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="chapter-2"><a class="header" href="#chapter-2">Chapter 2</a></h1>
-<p>This is chapter 2 of my <code>mdbook</code>.  I'm excited to really start using this program and find out what it can do.  This program is capable of a lot of things and I've barely scratched the surface.
-After all, it's written in pure <strong>Rust</strong> language.  <strong>Rust</strong> is known to be a very secure and performant language right up there with <strong>C</strong>.<br />
-In fact, it's reference implementation is written in <strong>C</strong>, just like <strong>Python</strong>, except <strong>Rust</strong> is more <strong>C</strong>-like than <strong>Python</strong>.</p>
-<h2 id="experimenting-with-emacs-linux-gui"><a class="header" href="#experimenting-with-emacs-linux-gui">Experimenting with Emacs linux GUI</a></h2>
-<p>So on <strong>Windows</strong> I don't get to be able to just <em>open a terminal</em> on <strong>Emacs</strong> without jumping thru a few hoops.  I'm sure I could do it for <strong>Powershell</strong> just fine, but I haven't found a good way to open a WSL linux shell in an Emacs buffer.</p>
-<p>Well now I can!</p>
-<p><em>Introducing the Emacs Linux GUI!</em>.  I'm now able to open a terminal emulator buffer by using the command <code>M-x ansi-term</code> in another buffer/window.</p>
-<p>This allows me to embed the command shell in the program I'm using <em>(Emacs)</em>.</p>
-<p>This has already been possible with <strong>Neovim</strong>, but having </p>
-<h2 id="installing-new-software"><a class="header" href="#installing-new-software">Installing new software</a></h2>
-<p>Installing new software on <strong>Arch Linux</strong> is pretty straightforward.  If I run into a <code>404</code> error when trying to install a package, I just run <code>sudo pacman -Syu</code> which updates my system and updates the mirror list.</p>
-<p>The reason this has to be done so often is because o</p>
-<p>I just installed <code>kgpg</code>, <code>kget</code>, <code>dolphin</code> (file browser), and <code>kde-cli-tools</code>.</p>
-<p>Now I'm installing some <strong>KDE</strong> applications.</p>
-<h2 id="problems-with-graphical-software"><a class="header" href="#problems-with-graphical-software">Problems with graphical software</a></h2>
-<p>I need to troubleshoot some things.  I guess I'm missing some dependencies for some things because I keep getting error messages about certain pieces of software.</p>
-<p>I run into errors with <code>dconf</code> all the time.</p>
-<ul>
-<li><input disabled="" type="checkbox"/>
-Figure out what's up with <code>gnome-todo</code>.  I can't create a new task list or any tasks!  A todo list is useless if you can't create a todo!</li>
-</ul>
+                        <h1 id="powershell-specific-notes"><a class="header" href="#powershell-specific-notes">Powershell Specific Notes</a></h1>
+<p>These pages/chapters/notes are specifically about <strong>Powershell</strong>.</p>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
                         
-                            <a rel="prev" href="chapter_1.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                            <a rel="prev" href="shell_scripts_in_usr_bin.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
                         
 
                         
-                            <a rel="next" href="awk_snippets.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next" href="TypeLiterals_Powershell.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
                         
@@ -209,13 +189,13 @@ Figure out what's up with <code>gnome-todo</code>.  I can't create a new task li
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
                 
-                    <a rel="prev" href="chapter_1.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a rel="prev" href="shell_scripts_in_usr_bin.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
                 
 
                 
-                    <a rel="next" href="awk_snippets.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next" href="TypeLiterals_Powershell.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
                 
